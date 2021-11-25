@@ -3,55 +3,55 @@ function brainLuck(instructionString, inputString) {
   var instructionArray = Array.from(instructionString);
   var characterArray = Array.from(inputString);
   var outputString = "";
-  var dataPointer = 0;
-  var instructionPointer = 0;
-  var inputPointer = 0;
-  var currentData = memoryTape[dataPointer];
-  var currentInstruction = instructionArray[instructionPointer];
-  var currentInputChar = characterArray[inputPointer];
+  var dataCursor = 0;
+  var instructionCursor = 0;
+  var inputCursor = 0;
+  var currentData = memoryTape[dataCursor];
+  var currentInstruction = instructionArray[instructionCursor];
+  var currentInputChar = characterArray[inputCursor];
   var currentInputCode = currentInputChar;
   var openBrackets = 0;
 
-  function incrementDataPointer() {
-      dataPointer++;
+  function incrementDataCursor() {
+      dataCursor++;
   }
-  function incrementDataPointerTest() {
+  function incrementDataCursorTest() {
     function test1() {
       memoryTape = [0,1,2,3];
-      dataPointer = 0;
+      dataCursor = 0;
       for (let i=0; i<=memoryTape.length; i++) {
-        console.log(dataPointer, currentData)
-        incrementDataPointer();
+        console.log(dataCursor, currentData)
+        incrementDataCursor();
       };
     };
   };
-  //uncomment to run INCREMENT DATA POINTER unit tests
-  //incrementDataPointerTest();    
+  //uncomment to run INCREMENT DATA Cursor unit tests
+  //incrementDataCursorTest();    
 
-  function decrementDataPointer() {
-      dataPointer--;
+  function decrementDataCursor() {
+      dataCursor--;
   }
-  function decrementDataPointerTests() {
-    console.log(`DECREMENT DATA POINTER tests ---------------------`);
+  function decrementDataCursorTests() {
+    console.log(`DECREMENT DATA Cursor tests ---------------------`);
     function test1() {
-      console.log("DECREMENT DATA POINTER test 1 ------------");
+      console.log("DECREMENT DATA Cursor test 1 ------------");
       memoryTape = [4,5,6,7,8,9];
-      dataPointer = 0;
+      dataCursor = 0;
       for (let i=0; i<=memoryTape.length; i++) {
-        console.log(dataPointer, currentData);
+        console.log(dataCursor, currentData);
         setNewCurrentData();
-        console.log(dataPointer, currentData)
+        console.log(dataCursor, currentData)
       };
     console.log("--------------------------------------");
   };
   function test2() {
-    console.log("DECREMENT DATA POINTER test 2 ------------");
+    console.log("DECREMENT DATA Cursor test 2 ------------");
     memoryTape = [1];
-    dataPointer = 0;
+    dataCursor = 0;
     for (let i=0; i<=memoryTape.length; i++) {
-      console.log(dataPointer, currentData)
-      incrementDataPointer();
-      console.log(dataPointer, currentData)
+      console.log(dataCursor, currentData)
+      incrementDataCursor();
+      console.log(dataCursor, currentData)
     };
     console.log("--------------------------------------");
     };
@@ -59,46 +59,46 @@ function brainLuck(instructionString, inputString) {
   test1();
   test2();
   }
-  //uncomment to run DECREMENT DATA POINTER unit tests
-  //decrementDataPointerTests();
+  //uncomment to run DECREMENT DATA Cursor unit tests
+  //decrementDataCursorTests();
 
-  function incrementInstructionPointer() {
-    instructionPointer++;
+  function incrementInstructionCursor() {
+    instructionCursor++;
   }
-  function incrementInstructionPointerTest() {
+  function incrementInstructionCursorTest() {
     function test1() {
       instructionArray = ["<",">","-","]"];
-      instructionPointer = 0;
+      instructionCursor = 0;
       for (let i=0; i<=instructionArray.length-1; i++) {
         setCurrentInstruction();
-        console.log(instructionPointer, currentInstruction)
-        incrementInstructionPointer();
+        console.log(instructionCursor, currentInstruction)
+        incrementInstructionCursor();
       };
     }
     test1();
   }
-  //uncomment to run INCREMENT INSTRUCTION POINTER unit tests
-  //incrementInstructionPointerTest();
+  //uncomment to run INCREMENT INSTRUCTION Cursor unit tests
+  //incrementInstructionCursorTest();
 
-  function decrementInstructionPointer() {
-    instructionPointer--;
+  function decrementInstructionCursor() {
+    instructionCursor--;
   }
-  function decrementInstructionPointerTest() {
-    console.log(`DECREMENT INSTRUCTION POINTER TESTS ---------------------`);
+  function decrementInstructionCursorTest() {
+    console.log(`DECREMENT INSTRUCTION Cursor TESTS ---------------------`);
     function test1() {
       instructionArray = ["<","-","+",">","[","-"];
-      instructionPointer = 5;
+      instructionCursor = 5;
       for (let i=0; i<=instructionArray.length-2; i++) {
-        console.log(`DECREMENT INSTRUCTION POINTER TEST ${i} ------------`);
+        console.log(`DECREMENT INSTRUCTION Cursor TEST ${i} ------------`);
         console.log(`CURRENT VALUES:
           Instruction Array: ${instructionArray}
-          Instruction Pointer: ${instructionPointer}
+          Instruction Cursor: ${instructionCursor}
           Current Instruction: ${currentInstruction}`
         );
-        decrementInstructionPointer();
+        decrementInstructionCursor();
         setCurrentInstruction();
         console.log(`RESULT VALUES:
-          Instruction Pointer: ${instructionPointer}
+          Instruction Cursor: ${instructionCursor}
           Current Instruction: ${currentInstruction}`
         );
       }
@@ -106,49 +106,49 @@ function brainLuck(instructionString, inputString) {
     };
     test1();
   }
-  //uncomment to run DECREMENT INSTRUCTION POINTER unit tests
-  //decrementInstructionPointerTest();
+  //uncomment to run DECREMENT INSTRUCTION Cursor unit tests
+  //decrementInstructionCursorTest();
 
   function setCurrentInstruction() {
-    currentInstruction = instructionArray[instructionPointer];
+    currentInstruction = instructionArray[instructionCursor];
   }
   function setCurrentInstructionTests() {
     console.log("SET CURRENT INSTRUCTION TESTS -----------")
     function test1() {
       console.log("SET CURRENT INSTRUCTION TEST 1 --------")
       instructionArray = ["<","-","+",">","[","-"];
-      instructionPointer = 0;
+      instructionCursor = 0;
       for (let i=0; i<=instructionArray.length-2; i++) {
         console.log(`LOOP: ${i}`)
           if (i === 0) {
             setCurrentInstruction();
             console.log(`CURRENT VALUES:
               Current Loop: ${i}
-              Current Instruction Pointer: ${instructionPointer}
+              Current Instruction Cursor: ${instructionCursor}
               Current Instruction Array: ${instructionArray}
               Current Instruction: ${currentInstruction}`
             );
-            incrementInstructionPointer();
+            incrementInstructionCursor();
             setCurrentInstruction();
-            console.log("Incremented instructionPointer and set new currentInstruction")
+            console.log("Incremented instructionCursor and set new currentInstruction")
             console.log(`RESULT VALUES:
               Current Loop: ${i}
-              Current Instruction Pointer: ${instructionPointer}
+              Current Instruction Cursor: ${instructionCursor}
               Current Instruction Array: ${instructionArray}
               Current Instruction: ${currentInstruction}`)
           } else {
             console.log(`CURRENT VALUES:
               Current Loop: ${i}
-              Current InstructionPointer: ${instructionPointer}
+              Current InstructionCursor: ${instructionCursor}
               Current Instruction Array: ${instructionArray}
               Current Instruction: ${currentInstruction}`
             );
-            incrementInstructionPointer();
+            incrementInstructionCursor();
             setCurrentInstruction();
-            console.log("Incremented instructionPointer and set new currentInstruction")
+            console.log("Incremented instructionCursor and set new currentInstruction")
             console.log(`RESULT VALUES:
               Current Loop: ${i}
-              Current Instruction Pointer: ${instructionPointer}
+              Current Instruction Cursor: ${instructionCursor}
               Current Instruction Array: ${instructionArray}
               Current Instruction: ${currentInstruction}`)
           }
@@ -161,19 +161,19 @@ function brainLuck(instructionString, inputString) {
   //setCurrentInstructionTests();
 
   function setNewCurrentInstruction() {
-    incrementInstructionPointer();
+    incrementInstructionCursor();
     setCurrentInstruction();
   }
   function setNewCurrentInstructionTest() {
     function test1() {
       instructionArray = ["<","-","+",">","[","-"];
-      instructionPointer = 0;
+      instructionCursor = 0;
       console.log(`Current Instruction Array: ${instructionArray}`);
       for (let i=0; i<=instructionArray.length; i++) {
-        if (instructionArray[instructionPointer] != null) {
+        if (instructionArray[instructionCursor] != null) {
           setCurrentInstruction();
           console.log(`Setting current Instruction: ${currentInstruction}`);
-          incrementInstructionPointer();
+          incrementInstructionCursor();
         } else {
           break;
         }
@@ -185,7 +185,7 @@ function brainLuck(instructionString, inputString) {
   //setNewCurrentInstructionTest();
 
   function setCurrentInputChar() {
-    currentInputChar = characterArray[inputPointer];
+    currentInputChar = characterArray[inputCursor];
   }
   function setCurrentInputCharTests() {
     function test1() {
@@ -193,17 +193,17 @@ function brainLuck(instructionString, inputString) {
       console.log(`SET CURRENT INPUT CHARACTER TEST 1 -----------`);
       currentInputChar = "x";
       characterArray = ["A","n","y","w","a","y"];
-      inputPointer = 3;
+      inputCursor = 3;
       console.log(`STARTING VALUES -----------------------
                     Current Input Character: ${currentInputChar}
                     Current Character Array: ${characterArray}
-                    current inputPointer: ${inputPointer}`
+                    current inputCursor: ${inputCursor}`
       )
       setCurrentInputChar();
       console.log(`RESULT VALUES -----------------------
                     Current Input Character: ${currentInputChar}
                     Current Character Array: ${characterArray}
-                    current inputPointer: ${inputPointer}`
+                    current inputCursor: ${inputCursor}`
       )
     }
     function test2() {
@@ -211,17 +211,17 @@ function brainLuck(instructionString, inputString) {
       console.log(`SET CURRENT INPUT CHARACTER TEST 2 -----------`);
       currentInputChar = "x";
       characterArray = ["Y","a","r","n"];
-      inputPointer = 3;
+      inputCursor = 3;
       console.log(`STARTING VALUES -----------------------
                     Current Input Character: ${currentInputChar}
                     Current Character Array: ${characterArray}
-                    current inputPointer: ${inputPointer}`
+                    current inputCursor: ${inputCursor}`
       )
       setCurrentInputChar();
       console.log(`RESULT VALUES -----------------------
                     Current Input Character: ${currentInputChar}
                     Current Character Array: ${characterArray}
-                    current inputPointer: ${inputPointer}`
+                    current inputCursor: ${inputCursor}`
       )
       console.log("--------------------------------------")
     }
@@ -230,17 +230,17 @@ function brainLuck(instructionString, inputString) {
       console.log(`SET CURRENT INPUT CHARACTER TEST 3 -----------`);
       currentInputChar = "x";
       characterArray = ["B","o","y"];
-      inputPointer = 0;
+      inputCursor = 0;
       console.log(`STARTING VALUES -----------------------
                     Current Input Character: ${currentInputChar}
                     Current Character Array: ${characterArray}
-                    current inputPointer: ${inputPointer}`
+                    current inputCursor: ${inputCursor}`
       )
       setCurrentInputChar();
       console.log(`RESULT VALUES -----------------------
                     Current Input Character: ${currentInputChar}
                     Current Character Array: ${characterArray}
-                    current inputPointer: ${inputPointer}`
+                    current inputCursor: ${inputCursor}`
       )
       console.log("--------------------------------------")
     }
@@ -253,7 +253,7 @@ function brainLuck(instructionString, inputString) {
 
   function setNewCurrentInputChar() {
     console.log("setNewCurrentInputChar()");
-      incrementInputPointer();
+      incrementInputCursor();
       setCurrentInputChar();
   }
   function setNewInputCharTests() {
@@ -261,19 +261,19 @@ function brainLuck(instructionString, inputString) {
       console.log("")
       console.log(`SET NEW CURRENT INPUT CHARACTER TEST 1 -----------`);
       characterArray = ["A","n","y"];
-      inputPointer =0;
+      inputCursor =0;
       currentInputChar = "A";
       for (let i=0; i <= characterArray.length-1; i++) {
         console.log("");
         console.log(`LOOP: ${i} --------------------`)
         console.log(`STARTING VALUES:
                       Current Input Character: ${currentInputChar}
-                      Current inputPointer: ${inputPointer}`
+                      Current inputCursor: ${inputCursor}`
         );
         setNewCurrentInputChar();
         console.log(`RESULT VALUES:
                       Current Input Character: ${currentInputChar}
-                      Current inputPointer: ${inputPointer}`
+                      Current inputCursor: ${inputCursor}`
         );
         console.log("--------------------------------------------------")
       }
@@ -291,29 +291,29 @@ function brainLuck(instructionString, inputString) {
   //uncomment to run SET NEW CURRENT INPUT CHARACTER unit tests
   //setNewInputCharTests();
 
-  function incrementInputPointer() {
-      inputPointer++;
+  function incrementInputCursor() {
+      inputCursor++;
   }    
-  function incrementInputPointerTests() {
+  function incrementInputCursorTests() {
     function test1() {
       characterArray = ["h","e","l","l","o"];
-      inputPointer = 0;
+      inputCursor = 0;
       for (let i=0; i<=characterArray.length; i++) {
-        console.log(inputPointer, currentInputChar)
+        console.log(inputCursor, currentInputChar)
         setNewCurrentInputChar();
       };  
     };  
   }
-  //uncomment to run INCREMENT INPUT POINTER unit tests
-  //incrementDataPointerTests(); 
+  //uncomment to run INCREMENT INPUT Cursor unit tests
+  //incrementDataCursorTests(); 
     
   function setCurrentData() {
-      currentData = memoryTape[dataPointer];
+      currentData = memoryTape[dataCursor];
   }    
   function setCurrentDataTests() {
     function test1() {
       memoryTape = [34];
-      dataPointer = 0;
+      dataCursor = 0;
       currentData = 0;
       console.log(`TEST 1 STARTING VALUES ------------------
                     Current Data: ${currentData}`
@@ -325,7 +325,7 @@ function brainLuck(instructionString, inputString) {
     }
     function test2() {
       memoryTape = [255];
-      dataPointer = 0;
+      dataCursor = 0;
       currentData = 4;
       console.log(`TEST 2 STARTING VALUES ------------------
                     Current Data: ${currentData}`
@@ -342,13 +342,13 @@ function brainLuck(instructionString, inputString) {
   //setCurrentDataTests();
      
   function setNewCurrentData() {
-      incrementDataPointer();
+      incrementDataCursor();
       setCurrentData();
   }    
   function setNewCurrentDataTests() {
     function test1() {
       memoryTape = [1,2];
-      dataPointer = 0;
+      dataCursor = 0;
       currentData = 1;
       console.log(`Current Data: ${currentData}`);
       setNewCurrentData();
@@ -356,10 +356,10 @@ function brainLuck(instructionString, inputString) {
     }
     function test2() {
       memoryTape = [1,2,3];
-      dataPointer = 0;
+      dataCursor = 0;
       currentData = 1;
       console.log(`Current Data: ${currentData}`);
-      incrementDataPointer();
+      incrementDataCursor();
       setNewCurrentData();
       console.log(`Current Data: ${currentData}`)
     }
@@ -370,7 +370,7 @@ function brainLuck(instructionString, inputString) {
   //setNewCurrentDataTests();
 
   function setCurrentInputCode() {
-      currentInputCode = characterArray.charCodeAt(inputPointer);
+      currentInputCode = characterArray.charCodeAt(inputCursor);
       console.log(`Set current input code to ${currentInputCode}`)
   }
   function setCurrentInputCodeTests() {
@@ -386,15 +386,15 @@ function brainLuck(instructionString, inputString) {
   //setCurrentInputCodeTests();
 
   function inputCharAsAsciiCode() {
-      memoryTape[dataPointer] = currentInputChar.charCodeAt();
+      memoryTape[dataCursor] = currentInputChar.charCodeAt();
   }
   function inputCharAsAsciiCodeTests() {
       function test1() {
         console.log("");
         console.log("--- INPUT CHAR AS ASCII CODE: TEST 1 ---");
         memoryTape = [0,0,0,0,0,0,0,0];
-        dataPointer = 0;
-        inputPointer = 0;
+        dataCursor = 0;
+        inputCursor = 0;
         inputString = "Codewars";
         characterArray = ["C","o","d","e","w",'a','r',"s"];
         loopCount = 0;
@@ -425,8 +425,8 @@ function brainLuck(instructionString, inputString) {
         console.log("");
         console.log("--- INPUT CHAR AS ASCII CODE: TEST 2 ---");
         memoryTape = [0,0,0,0,0,0,0,0,0,0];
-        dataPointer = 0;
-        inputPointer = 0;
+        dataCursor = 0;
+        inputCursor = 0;
         inputString = "Debaucle";
         characterArray = ["D","e","b","a","u","c","l","e"];
         loopCount = 0;
@@ -457,8 +457,8 @@ function brainLuck(instructionString, inputString) {
         console.log("");
         console.log("--- INPUT CHAR AS ASCII CODE: TEST 3 ---");
         memoryTape = [0,0,0,0,0,0,0,0];
-        dataPointer = 0;
-        inputPointer = 0;
+        dataCursor = 0;
+        inputCursor = 0;
         inputString = "Exhaustion";
         characterArray = ["E","x","h","a","u","s","t","i","o","n"];
         loopCount = 0;
@@ -495,9 +495,9 @@ function brainLuck(instructionString, inputString) {
   function outputAsciiCodeAsChar() {
       setCurrentData();
       if (currentData < 32) {
-        console.log(`Error, no character code detected. memTable[dataPointer] (${memoryTape[dataPointer]}) is null or 0-31.`);
+        console.log(`Error, no character code detected. memTable[dataCursor] (${memoryTape[dataCursor]}) is null or 0-31.`);
       } else {
-      outputString = outputString.concat(String.fromCharCode(memoryTape[dataPointer]));
+      outputString = outputString.concat(String.fromCharCode(memoryTape[dataCursor]));
       }
   };
   function OutputAsciiCodeAsCharTests() {
@@ -505,14 +505,14 @@ function brainLuck(instructionString, inputString) {
         console.log("");
         console.log("--- ASCII CODE TO OUTPUT STRING: TEST 1 ---");
           memoryTape = [0, 100, 255, 300];
-          dataPointer = 0;
+          dataCursor = 0;
           setCurrentData();
           setCurrentInputChar();
           console.log(`STARTING VALUES: 
             Current Data: (${currentData}) 
             Current memory tape: (${memoryTape}) 
             Input Character: (${String.fromCharCode(currentData)}) 
-            Input character code: (${characterArray[inputPointer].charCodeAt(0)})
+            Input character code: (${characterArray[inputCursor].charCodeAt(0)})
             Current output string: (${outputString})`);
           outputAsciiCodeAsChar();
           setCurrentInputChar();
@@ -520,7 +520,7 @@ function brainLuck(instructionString, inputString) {
             Current Data: (${currentData}) 
             Current memory tape: (${memoryTape}) 
             Input Character: (${String.fromCharCode(currentData)}) 
-            Input character code: (${characterArray[inputPointer].charCodeAt(0)}) 
+            Input character code: (${characterArray[inputCursor].charCodeAt(0)}) 
             Current output string: (${outputString})`);
           console.log("------------------------------------");
       }
@@ -529,14 +529,14 @@ function brainLuck(instructionString, inputString) {
         console.log("");
         console.log("--- ASCII CODE TO OUTPUT STRING: TEST 2 ---");
         memoryTape = [0, 100, 255, 300];
-        dataPointer = 1;
+        dataCursor = 1;
         setCurrentData();
         setCurrentInputChar();
         console.log(`STARTING VALUES: 
           Current Data: (${currentData}) 
           Current memory tape: (${memoryTape}) 
           Input Character: (${String.fromCharCode(currentData)}) 
-          Input character code: (${characterArray[inputPointer].charCodeAt(0)})
+          Input character code: (${characterArray[inputCursor].charCodeAt(0)})
           Current output string: (${outputString})`);
         outputAsciiCodeAsChar();
         setCurrentInputChar();
@@ -544,7 +544,7 @@ function brainLuck(instructionString, inputString) {
           Current Data: (${currentData}) 
           Current memory tape: (${memoryTape}) 
           Input Character: (${String.fromCharCode(currentData)}) 
-          Input character code: (${characterArray[inputPointer].charCodeAt(0)}) 
+          Input character code: (${characterArray[inputCursor].charCodeAt(0)}) 
           Current output string: (${outputString})`);
         console.log("------------------------------------");
       }
@@ -553,14 +553,14 @@ function brainLuck(instructionString, inputString) {
         console.log("");
         console.log("--- ASCII CODE TO OUTPUT STRING: TEST 3 ---");
         memoryTape = [0, 100, 255, 300];
-        dataPointer = 2;
+        dataCursor = 2;
         setCurrentData();
         setCurrentInputChar();
         console.log(`STARTING VALUES: 
           Current Data: (${currentData}) 
           Current memory tape: (${memoryTape}) 
           Input Character: (${String.fromCharCode(currentData)}) 
-          Input character code: (${characterArray[inputPointer].charCodeAt(0)})
+          Input character code: (${characterArray[inputCursor].charCodeAt(0)})
           Current output string: (${outputString})`);
         outputAsciiCodeAsChar();
         setCurrentInputChar();
@@ -568,7 +568,7 @@ function brainLuck(instructionString, inputString) {
           Current Data: (${currentData}) 
           Current memory tape: (${memoryTape}) 
           Input Character: (${String.fromCharCode(currentData)}) 
-          Input character code: (${characterArray[inputPointer].charCodeAt(0)}) 
+          Input character code: (${characterArray[inputCursor].charCodeAt(0)}) 
           Current output string: (${outputString})`);
         console.log("------------------------------------");
       }
@@ -577,14 +577,14 @@ function brainLuck(instructionString, inputString) {
       console.log("");
       console.log("--- ASCII CODE TO OUTPUT STRING: TEST 4 ---");
         memoryTape = [0, 100, 255, 300];
-        dataPointer = 3;
+        dataCursor = 3;
         setCurrentData();
         setCurrentInputChar();
         console.log(`STARTING VALUES: 
           Current Data: (${currentData}) 
           Current memory tape: (${memoryTape}) 
           Input Character: (${String.fromCharCode(currentData)}) 
-          Input character code: (${characterArray[inputPointer].charCodeAt(0)}) 
+          Input character code: (${characterArray[inputCursor].charCodeAt(0)}) 
           Current output string: (${outputString})`);
         outputAsciiCodeAsChar();
         setCurrentInputChar();
@@ -592,7 +592,7 @@ function brainLuck(instructionString, inputString) {
           Current Data: (${currentData}) 
           Current memory tape: (${memoryTape}) 
           Input Character: (${String.fromCharCode(currentData)}) 
-          Input character code: (${characterArray[inputPointer].charCodeAt(0)}) 
+          Input character code: (${characterArray[inputCursor].charCodeAt(0)}) 
           Current output string: (${outputString})`);
         console.log("------------------------------------");
       }
@@ -607,9 +607,9 @@ function brainLuck(instructionString, inputString) {
     
   function incrementCurrentData() {
       if (currentData <= 254) {
-        memoryTape[dataPointer] = currentData + 1;
+        memoryTape[dataCursor] = currentData + 1;
       } else if (currentData >= 255) {
-        memoryTape[dataPointer] = 0;
+        memoryTape[dataCursor] = 0;
       }
       setCurrentData();
   };
@@ -618,7 +618,7 @@ function brainLuck(instructionString, inputString) {
         console.log("--- 'INCREMENT CURRENT DATA' TEST 1----------------------------------------- ")
         currentData = 0;
         memoryTape = [0, 100, 255, 300];
-        dataPointer = 0;
+        dataCursor = 0;
         console.log(`STARTING VALUES: Current data: (${currentData}) Current memory tape: (${memoryTape})`)
         incrementCurrentData();
         console.log(`RESULT VALUES: Current data: (${currentData}) Current memory tape: (${memoryTape})`)
@@ -628,7 +628,7 @@ function brainLuck(instructionString, inputString) {
         console.log("--- 'INCREMENT CURRENT DATA' TEST 2----------------------------------------- ")
         currentData = 300;
         emoryTape = [0, 100, 255, 300];
-        dataPointer = 3;
+        dataCursor = 3;
         console.log(`STARTING VALUES: Current data: (${currentData}) Current memory tape: (${memoryTape})`)
         incrementCurrentData();
         console.log(`RESULT VALUES: Current data: (${currentData}) Current memory tape: (${memoryTape})`)
@@ -638,7 +638,7 @@ function brainLuck(instructionString, inputString) {
         console.log("--- 'INCREMENT CURRENT DATA' TEST 3----------------------------------------- ")
         currentData = 100;
         memoryTape = [0, 100, 255, 300];
-        dataPointer = 1;
+        dataCursor = 1;
         console.log(`STARTING VALUES: Current data: (${currentData}) Current memory tape: (${memoryTape})`)
         incrementCurrentData();
         console.log(`RESULT VALUES: Current data: (${currentData}) Current memory tape: (${memoryTape})`)
@@ -648,7 +648,7 @@ function brainLuck(instructionString, inputString) {
         console.log("--- 'INCREMENT CURRENT DATA' TEST 4----------------------------------------- ")
         currentData = 255;
         memoryTape = [0, 100, 255, 300];
-        dataPointer = 2;
+        dataCursor = 2;
         console.log(`STARTING VALUES: Current data: (${currentData}) Current memory tape: (${memoryTape})`)
         incrementCurrentData();
         console.log(`RESULT VALUES: Current data: (${currentData}) Current memory tape: (${memoryTape})`)
@@ -664,14 +664,14 @@ function brainLuck(instructionString, inputString) {
   function decrementCurrentData() {
       if (currentData >= 1) {
         if (currentData >=255) {
-          memoryTape[dataPointer] = 254;
+          memoryTape[dataCursor] = 254;
           setCurrentData();
         } else {
           currentData--;
           setCurrentByte();
         } 
       } else if (currentData <= 0 ) {
-        memoryTape[dataPointer] = 255;
+        memoryTape[dataCursor] = 255;
         setCurrentData();
       }
   };
@@ -679,8 +679,8 @@ function brainLuck(instructionString, inputString) {
       function test1() {
         console.log("---DECREMENT CURRENT DATA TEST 1----------------------------------------- ")
         memoryTape = [0, 100, 1, 300];
-        dataPointer = 0;
-        currentData = memoryTape[dataPointer];
+        dataCursor = 0;
+        currentData = memoryTape[dataCursor];
         console.log(`STARTING VALUES: Current data: (${currentData}) Current memory tape: (${memoryTape})`)
         decrementCurrentData();
         console.log(`RESULT VALUES: Current data: (${currentData}) Current memory tape: (${memoryTape})`)
@@ -688,8 +688,8 @@ function brainLuck(instructionString, inputString) {
       function test2() {
         console.log("---DECREMENT CURRENT DATA TEST 2----------------------------------------- ")
         memoryTape = [0, 100, 1, 300];
-        dataPointer = 1;
-        currentData = memoryTape[dataPointer];
+        dataCursor = 1;
+        currentData = memoryTape[dataCursor];
         console.log(`STARTING VALUES: Current data: (${currentData}) Current memory tape: (${memoryTape})`)
         decrementCurrentData();
         console.log(`RESULT VALUES: Current data: (${currentData}) Current memory tape: (${memoryTape})`)        
@@ -697,8 +697,8 @@ function brainLuck(instructionString, inputString) {
       function test3() {
         console.log("---DECREMENT CURRENT DATA TEST 3----------------------------------------- ")
         memoryTape = [0, 100, 1, 300];
-        dataPointer = 2;
-        currentData = memoryTape[dataPointer];
+        dataCursor = 2;
+        currentData = memoryTape[dataCursor];
         console.log(`STARTING VALUES: Current data: (${currentData}) Current memory tape: (${memoryTape})`)
         decrementCurrentData();
         console.log(`RESULT VALUES: Current data: (${currentData}) Current memory tape: (${memoryTape})`)
@@ -706,8 +706,8 @@ function brainLuck(instructionString, inputString) {
       function test4() {
         console.log("---DECREMENT CURRENT DATA TEST 4----------------------------------------- ")
         memoryTape = [0, 100, 1, 300];
-        dataPointer = 3;
-        currentData = memoryTape[dataPointer];
+        dataCursor = 3;
+        currentData = memoryTape[dataCursor];
         console.log(`STARTING VALUES: Current data: (${currentData}) Current memory tape: (${memoryTape})`)
         decrementCurrentData();
         console.log(`RESULT VALUES: Current data: (${currentData}) Current memory tape: (${memoryTape})`)
@@ -722,65 +722,75 @@ function brainLuck(instructionString, inputString) {
   //uncomment to run DECREMENT CURRENT DATA unit tests
   //decrementCurrentDataTests();
 
-  function jumpInstructionPointerForward() {
-    setNewCurrentInstruction();
-    for (; instructionPointer <= instructionArray.length; instructionPointer++) {
+  function jumpInstructionCursorForward() {
+    console.log(`
+      Current Instruction Cursor Index: ${instructionCursor}
+      Current Instruction: ${currentInstruction}`
+    );
+    for (; instructionCursor <= instructionArray.length; instructionCursor++)
       switch (currentInstruction) {
         case '[':
           openBrackets++;
+          console.log(`Current Instruction Cursor Index: ${instructionCursor}
+            Current Instruction: ${currentInstruction}
+            Open Brackets: ${openBrackets}`
+          );
           setNewCurrentInstruction();
           break;
-          case ']':
-            if (openBrackets == 0) {
-              setNewCurrentInstruction();
-              break;
-            } else {
-              openBrackets--;
-              setNewCurrentInstruction();
-            }
-        break;
+        case ']':
+          if (openBrackets === 0) {
+            console.log(`Current Instruction Cursor Index: ${instructionCursor}
+              Current Instruction: ${currentInstruction}
+              Open Brackets: ${openBrackets}. Closing bracket found at ${instructionArray.indexOf(instructionArray[instructionCursor])}`
+            );
+            setNewCurrentInstruction();
+            break;
+          } else {
+            openBrackets--;
+            console.log(`Current Instruction Cursor Index: ${instructionCursor}
+              Current Instruction: ${currentInstruction}
+              Open Brackets: ${openBrackets}`
+            );
+            setNewCurrentInstruction();
+          }
+          break;
         default:
+          console.log(`Current Instruction Cursor Index: ${instructionCursor}
+            Current Instruction: ${currentInstruction}
+            Nonbracket character. Setting new current instruction.`
+          );
           setNewCurrentInstruction();
-      }
-    }       
+    };
   };
-  //jumpInstructionPointerForward();
+  
 
-  function jumpInstructionPointerForwardTests() {
+  //jumpInstructionCursorForward();
+
+  function jumpInstructionCursorForwardTests() {
     instructionArray = Array.from("[+,]<.[.]]>");
-    setCurrentInstruction();
-    console.log(`Open Brackets: ${openBrackets}
-      Current Instruction Array: ${instructionArray}
-      Current Instruction: ${currentInstruction}
-      Current Index (instructionPointer): ${instructionPointer}`
-    );
-    jumpInstructionPointerForward();
-    console.log(`Open Brackets: ${openBrackets}
-      Current Instruction Array: ${instructionArray}
-      Current Instruction: ${currentInstruction}
-      Current Index (Should be 9, closing bracket's index in test instruction array): ${instructionPointer}`
-    );
+    instructionCursor = -1;
+    jumpInstructionCursorForward();
   }
-  //uncomment to run JUMP INSTRUCTION POINTER FORWARD unit tests
-  jumpInstructionPointerForwardTests();
+  //uncomment to run JUMP INSTRUCTION Cursor FORWARD unit tests
+  jumpInstructionCursorForwardTests();
 
   
 
-  function jumpInstructionPointerBack() {
+  function jumpInstructionCursorBack() {
     var closedBrackets = 0;
     function setNewInstruction() {
-      instructionPointer--;
-      currentInstruction = instructionArray[instructionPointer];
+      instructionCursor--;
+      currentInstruction = instructionArray[instructionCursor];
     }                 
-    if (memoryTape[dataPointer] !== 0) {
+    if (memoryTape[dataCursor] !== 0) {
       setNewInstruction();
       if (currentInstruction === "]") {
         closedBrackets++;
         setNewInstruction();
       } else if (currentInstruction === "[") {
         if (closedBrackets === 0) {
-          instructionPointer++;
-          currentInstruction = instructionArray[instructionPointer];
+          instructionCursor++;
+          currentInstruction = instructionArray[instructionCursor];
         } else {
           closedBrackets--;
           setNewInstruction();
@@ -794,48 +804,49 @@ function brainLuck(instructionString, inputString) {
                                   
                                   
   function mainLoop() {
-  // for (; instructionPointer <= instructionArray.length; instructionPointer++) {
-  //   currentInstruction = instructionArray[instructionPointer];
+  // for (; instructionCursor <= instructionArray.length; instructionCursor++) {
+  //   currentInstruction = instructionArray[instructionCursor];
   //   // console.log(currentInstruction)
   //   // console.log("main for loop reached")
   //   switch (currentInstruction) {
   //     case '>':
-  //       //console.log(`INCREMENT dataPointer to ${dataPointer + 1}.`);
-  //       dataPointer++;
+  //       //console.log(`INCREMENT dataCursor to ${dataCursor + 1}.`);
+  //       dataCursor++;
   //       break;
   //     case '<':
-  //       //console.log(`DECREMENT dataPointer to ${dataPointer - 1}.`);
-  //       dataPointer--;
+  //       //console.log(`DECREMENT dataCursor to ${dataCursor - 1}.`);
+  //       dataCursor--;
   //       break;
   //     case '+':
-  //       //console.log(`INCREMENT byte (${memoryTape[dataPointer]}) IN memoryTape AT dataPointer to ${memoryTape[dataPointer + 1]}.`);
+  //       //console.log(`INCREMENT byte (${memoryTape[dataCursor]}) IN memoryTape AT dataCursor to ${memoryTape[dataCursor + 1]}.`);
   //       incrementMemoryTapeByte();
-  //       //console.log(memoryTape[dataPointer]);
+  //       //console.log(memoryTape[dataCursor]);
   //       break;
   //     case '-':
-  //       //console.log(`DECREMENT byte (${memoryTape[dataPointer]}) IN memoryTape AT dataPointer to ${memoryTape[dataPointer - 1]}.`);
+  //       //console.log(`DECREMENT byte (${memoryTape[dataCursor]}) IN memoryTape AT dataCursor to ${memoryTape[dataCursor - 1]}.`);
   //       decrementMemoryTapeByte();
-  //       //console.log(memoryTape[dataPointer]);
+  //       //console.log(memoryTape[dataCursor]);
   //       break;
   //     case '.':
-  //       //console.log(`OUTPUT byte IN memoryTape AT data pointer (${memoryTape[dataPointer]}) TO outputString AS character (${String.fromCharCode(memoryTape[dataPointer])}).`);
+  //       //console.log(`OUTPUT byte IN memoryTape AT data Cursor (${memoryTape[dataCursor]}) TO outputString AS character (${String.fromCharCode(memoryTape[dataCursor])}).`);
   //       outputMemoryTapeByte();
   //       //console.log(outputString);
   //       break;
   //     case ',':
-  //       //console.log(`INPUT byte IN characterArray AT inputPointer (${characterArray[inputPointer]}) TO memoryTape cell AT dataPointer (${memoryTape[dataPointer]})AS ascii code (${characterArray[inputPointer].charCodeAt(0)}).`);
+  //       //console.log(`INPUT byte IN characterArray AT inputCursor (${characterArray[inputCursor]}) TO memoryTape cell AT dataCursor (${memoryTape[dataCursor]})AS ascii code (${characterArray[inputCursor].charCodeAt(0)}).`);
   //       inputCharacterArrayByte();
   //       break;
   //     case '[':
-  //       //console.log('IF dataPointer IS AT zero, MOVE instruction pointer TO next command AFTER matched bracket set.');
-  //       jumpInstructionPointerForward();
+  //       //console.log('IF dataCursor IS AT zero, MOVE instruction Cursor TO next command AFTER matched bracket set.');
+  //       jumpInstructionCursorForward();
   //       break;
   //     case ']':
-  //       //console.log('IF dataPointer IS AT nonzero, MOVE instruction pointer TO first command IN matched bracket set.');
-  //       jumpInstructionPointerBack();
+  //       //console.log('IF dataCursor IS AT nonzero, MOVE instruction Cursor TO first command IN matched bracket set.');
+  //       jumpInstructionCursorBack();
   //       break;
   //   }
   //   }
+  //}
   }
 }
 //uncomment to test main program
