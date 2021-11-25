@@ -25,27 +25,27 @@ function brainLuck(instructionString, inputString) {
       };
     };
   };
-  //uncomment to run INCREMENT DATA Cursor unit tests
+  //uncomment to run INCREMENT DATA CURSOR unit tests
   //incrementDataCursorTest();    
 
   function decrementDataCursor() {
       dataCursor--;
   }
   function decrementDataCursorTests() {
-    console.log(`DECREMENT DATA Cursor tests ---------------------`);
+    console.log(`DECREMENT DATA CURSOR tests ---------------------`);
     function test1() {
-      console.log("DECREMENT DATA Cursor test 1 ------------");
+      console.log("DECREMENT DATA CURSOR test 1 ------------");
       memoryTape = [4,5,6,7,8,9];
-      dataCursor = 0;
+      dataCURSOR = 0;
       for (let i=0; i<=memoryTape.length; i++) {
-        console.log(dataCursor, currentData);
+        console.log(dataCURSOR, currentData);
         setNewCurrentData();
-        console.log(dataCursor, currentData)
+        console.log(dataCURSOR, currentData)
       };
     console.log("--------------------------------------");
   };
   function test2() {
-    console.log("DECREMENT DATA Cursor test 2 ------------");
+    console.log("DECREMENT DATA CURSOR test 2 ------------");
     memoryTape = [1];
     dataCursor = 0;
     for (let i=0; i<=memoryTape.length; i++) {
@@ -59,7 +59,7 @@ function brainLuck(instructionString, inputString) {
   test1();
   test2();
   }
-  //uncomment to run DECREMENT DATA Cursor unit tests
+  //uncomment to run DECREMENT DATA CURSOR unit tests
   //decrementDataCursorTests();
 
   function incrementInstructionCursor() {
@@ -77,7 +77,7 @@ function brainLuck(instructionString, inputString) {
     }
     test1();
   }
-  //uncomment to run INCREMENT INSTRUCTION Cursor unit tests
+  //uncomment to run INCREMENT INSTRUCTION CURSOR unit tests
   //incrementInstructionCursorTest();
 
   function decrementInstructionCursor() {
@@ -106,8 +106,8 @@ function brainLuck(instructionString, inputString) {
     };
     test1();
   }
-  //uncomment to run DECREMENT INSTRUCTION Cursor unit tests
-  //decrementInstructionCursorTest();
+  //uncomment to run DECREMENT INSTRUCTION CURSOR unit tests
+//decrementInstructionCursorTest();
 
   function setCurrentInstruction() {
     currentInstruction = instructionArray[instructionCursor];
@@ -730,36 +730,36 @@ function brainLuck(instructionString, inputString) {
     for (; instructionCursor <= instructionArray.length; instructionCursor++)
       switch (currentInstruction) {
         case '[':
+          setCurrentInstruction();
           openBrackets++;
           console.log(`Current Instruction Cursor Index: ${instructionCursor}
             Current Instruction: ${currentInstruction}
             Open Brackets: ${openBrackets}`
           );
-          setNewCurrentInstruction();
           break;
         case ']':
+          setCurrentInstruction();
           if (openBrackets === 0) {
             console.log(`Current Instruction Cursor Index: ${instructionCursor}
               Current Instruction: ${currentInstruction}
               Open Brackets: ${openBrackets}. Closing bracket found at ${instructionArray.indexOf(instructionArray[instructionCursor])}`
             );
-            setNewCurrentInstruction();
             break;
           } else {
+            setCurrentInstruction();
             openBrackets--;
             console.log(`Current Instruction Cursor Index: ${instructionCursor}
               Current Instruction: ${currentInstruction}
               Open Brackets: ${openBrackets}`
-            );
-            setNewCurrentInstruction();
+              );
+            break;
           }
-          break;
-        default:
+          default:
+          setCurrentInstruction();
           console.log(`Current Instruction Cursor Index: ${instructionCursor}
             Current Instruction: ${currentInstruction}
             Nonbracket character. Setting new current instruction.`
           );
-          setNewCurrentInstruction();
     };
   };
   
@@ -771,7 +771,7 @@ function brainLuck(instructionString, inputString) {
     instructionCursor = -1;
     jumpInstructionCursorForward();
   }
-  //uncomment to run JUMP INSTRUCTION Cursor FORWARD unit tests
+  //uncomment to run JUMP INSTRUCTION CURSOR FORWARD unit tests
   jumpInstructionCursorForwardTests();
 
   
